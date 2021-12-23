@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-""""Setup logic for pip.""""
+""""Setup logic for pip."""
 
 from setuptools import setup
 
