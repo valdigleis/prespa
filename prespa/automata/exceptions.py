@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """Exception classes used by automata and fuzzy hesitant elements."""
 
 

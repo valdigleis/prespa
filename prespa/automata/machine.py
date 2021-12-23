@@ -24,13 +24,13 @@ class PNTHFA(object):
                 raise NotDefineTransition('The transition {} not is define.'.format(L))
         return S
 
-    def computePrefixes(self, word, deep):
+    def computePrefixes(self, word, depth):
         subStrings = []
         n = len(word)
         for i in range(n, 0, -1):
             S = word[0:i]
             subStrings.append(S)
-            if len(subStrings) > deep:
+            if len(subStrings) > depth:
                 break
         output = ZERO
         for w in subStrings:
