@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from automata.exceptions import NumberOutRange
-from automata.exceptions import EmptyInput
-from automata.exceptions import TypeNumericError
-from automata.exceptions import NotIsTHFE
+from prespa.automata.exceptions import NumberOutRange, EmptyInput, TypeNumericError, NotIsTHFE
 
 """This file provides the class and also predefined objects for working with typical hesitant fuzzy math."""
 

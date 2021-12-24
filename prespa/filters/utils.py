@@ -18,10 +18,10 @@ def getMeasures(img, iLine, iCol, d):
     return [M.min(), M.mean(), np.median(M), M.max()]
 
 
-def buildTreeAutomaton(img, n):
+def buildTreeAutomaton(img=None, depth=0, n=0):
     """Build the tree automaton"""
     function_xi = dict()
-    
+
     states = set()
     delta = dict()
     F = dict()
@@ -54,10 +54,10 @@ def buildTreeAutomaton(img, n):
         states.add(S3)
         states.add(S4)
 
-        d1 = (S, "1")
-        d2 = (S, "2")
-        d3 = (S, "3")
-        d4 = (S, "4")
+        d1 = (S, '1')
+        d2 = (S, '2')
+        d3 = (S, '3')
+        d4 = (S, '4')
 
         delta[d1] = S1
         delta[d2] = S2

@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from automata.exceptions import NotDefineTransition
-
-from automata.tfmath import ZERO
+from prespa.automata.exceptions import NotDefineTransition
+from prespa.automata.tfmath import ZERO
 
 """This file provides the class that implements pseudo typical hesitant fuzzy automaton."""
 
 class PNTHFA(object):
-    def __init__(self, delta = None, F = None):
+    def __init__(self, function_delta = None, F = None):
         self._s0 = 0
-        self.__delta = delta
+        self.__delta = function_delta
         self.__F = F
 
     

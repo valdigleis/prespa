@@ -23,8 +23,11 @@ def denoise_salt(img, depth=0):
     elif depth < 0:
         raise DepthNegative('The input processing depth was negative value.')
     else:
-        tImg = img/255
-        machine, function_xi = buildTreeAutomaton(tImg, depth)
+        if img.max() <= 1.0:
+            machine, function_xi = buildTreeAutomaton(img, depth, n)
+        else:
+            tImg = img/255
+            machine, function_xi = buildTreeAutomaton(tImg, depth, n)
         words = createListWord(d)
         newIMG = np.zeros((m,n), dtype=float)
         for w in words:
@@ -34,6 +37,7 @@ def denoise_salt(img, depth=0):
             i = C[0]
             j = C[1]
             T = machine.computePrefixes(word, depth)
-            #newIMG[i, j] = tImg[i, j] * T.meanCollapse()
-            newIMG[i, j] = tImg[i, j]
+            newIMG[i, j] = tImg[i, j] * T.meanCollapse()
+        if img.max() > 1.0:
+            newIMG[i, j] = newIMG[i, j] * 255
         return newIMG 
