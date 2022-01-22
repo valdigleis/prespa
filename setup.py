@@ -19,7 +19,10 @@ setup(
     author='Valdigleis S Costa',
     author_email='valdigleis@gmail.com',
     license='MIT License',
-    packages=['prespa'],
+    packages=[
+        'prespa',
+        'prespa.filters'
+    ],
     entry_points={},
     zip_safe=False
 )

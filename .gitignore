@@ -141,3 +141,7 @@ dmypy.json
 
 # Local History for Visual Studio Code
 .history/
+
+# File generate noise
+add-salt-noise.py
+experimenter.py
