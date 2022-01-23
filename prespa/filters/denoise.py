@@ -10,6 +10,20 @@ import numpy as np
 
 
 def denoise_salt(img, depth=0):
+    """Method for removing salt-like noise.
+    
+    Parameters
+    ----------
+    img : ndarray
+        An image with salt-like noise.
+    depth : int
+        Depth level that should be used as a reference in the treatment.
+
+    Returns
+    ----------
+    newImg : ndarray
+        A treated image.
+    """
     (m, n) = img.shape
     if m != n:
         raise NotSquareImage('Image dimension is ({}, {}) but this filter has implemented for square images.'.format(m, n))
