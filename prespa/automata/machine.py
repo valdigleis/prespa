@@ -12,7 +12,6 @@ class PNTHFA(object):
         self.__delta = function_delta
         self.__F = F
 
-    
     def compute(self, word):
         S = 0
         for c in word:
@@ -23,20 +22,11 @@ class PNTHFA(object):
                 raise NotDefineTransition('The transition {} not is define.'.format(L))
         return S
 
-    def computePrefixes(self, word, depth):
-        subStrings = []
-        n = len(word)
-        for i in range(n, 0, -1):
-            S = word[0:i]
-            subStrings.append(S)
-            if len(subStrings) > depth:
-                break
-        output = ZERO
-        for w in subStrings:
-            s = self.compute(w)
-            if s != None:
-                output = output + self.__F[s]
-        return output
+    def getValuationState(self, state):
+        if state <= len(self):
+            return self.__F[state]
+        else:
+            return None
     
     def __len__(self):
         return len(self.__F)    

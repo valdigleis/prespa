@@ -21,7 +21,8 @@ setup(
     license='MIT License',
     packages=[
         'prespa',
-        'prespa.filters'
+        'prespa.filters',
+        'prespa.automata'
     ],
     entry_points={},
     zip_safe=False

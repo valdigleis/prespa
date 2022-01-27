@@ -144,4 +144,5 @@ dmypy.json
 
 # File generate noise
 add-salt-noise.py
-experimenter.py
+experimenter-my.py
+experimenter-proof.py

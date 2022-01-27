@@ -19,17 +19,7 @@ class DimensionNotIsPowerTwo(ImageErrors):
 
     pass
 
-class DepthType(ImageErrors):
-    """The depth not is an int value"""
-
-    pass
-
-class DepthInconsistent(ImageErrors):
-    """The filtering depth was greater than the image dimension base."""
-
-    pass
-
-class DepthNegative(ImageErrors):
-    """The filtering depth was greater than the height of the automaton tree"""
+class ModeNotDefine(Exception):
+    """The mode not is define."""
 
     pass

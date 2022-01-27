@@ -14,9 +14,7 @@ class TestDenoise(unittest.TestCase):
 
     def test_denoiseSalt(self):
         fig = io.imread('../images/noise-salt/01/airplane.pgm')
-        nfig = denoise_salt(fig, 0)
-        print(fig.dtype)
-        print(nfig.dtype)
+        nfig = denoise_salt(fig)
         T = (fig == nfig).all()
         self.assertEqual(T, False)
 
