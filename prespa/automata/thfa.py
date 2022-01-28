@@ -5,24 +5,31 @@ from prespa.automata.tfmath import ZERO, ONE
 
 class THFA(object):
     
-    def __init__(self, function_delta = None, valuation_delta = None, F = None):
+    def __init__(self, delta = None, F = None):
         self._s0 = 0
-        self.__delta = function_delta
-        self.__valuation = valuation_delta 
+        self.__delta = delta 
         self.__F = F
+        self.__deltaAux = dict()
+        self.__startDeltaAux()
+
+    def __startDeltaAux(self):
+        for D in self.__delta:
+            L = (D[0], D[1])
+            self.__deltaAux[L] = D[2]
 
     def compute(self, word):
         vCompute = ONE
         s = 0
         for c in word:
-            D = [s, c]
-            if D in self.__delta:
-                s = self.__delta[D]
-                V = [D[1], c, s]
-                vCompute = vCompute * self.__valuation[V]
+            L = (s, c)
+            if L in self.__deltaAux:
+                p = self.__deltaAux[L]
+                T = (s, c, p)
+                vCompute = vCompute * self.__delta[T]
+                s = p
             else:
-                raise NotDefineTransition('The transition \u03BC({s}, {c}) not is define.')
-        return vCompute * self.__F[s]
+                NotDefineTransition(f'The transition for the pair ({s}, {c}) not is define.')
+        return s, vCompute
 
     def __len__(self):
         return len(self.__F)    
@@ -33,9 +40,13 @@ class THFA(object):
         X = set(["1", "2", "3", "4"])
         D = ''
         F = ''
-        for key, value  in self.__valuation.items():
-            S.add(key[0])
-            D = D + '\u03B4(' + str(key[0]) + ',' + str(key[1]) + ',' + str(key[2]) + ')=' + str(value) + '\n'
+        for key, v  in self.__delta.items():
+            s1 = key[0]
+            c = key[1]
+            s2 = key[2]
+            S.add(s1)
+            S.add(s2)
+            D = D + '\u03B4(' + str(s1) + ',' + c + ',' + str(s2) + ')=' + str(v) + '\n'
         for key, value in self.__F.items():
             F = F + '\u03BC(' + str(key) + ')=' + str(value) + '\n'
         output = output + str(S) + "\n" + str(X) + "\n" + str(self.__s0) + '\n' + D + F
